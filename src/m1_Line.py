@@ -441,7 +441,7 @@ class Line(object):
           :rtype: float
         """
         # ---------------------------------------------------------------------
-        # TODO: 7.
+        # done: 7.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -449,7 +449,10 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
-        
+        a = self.end.x - self.start.x
+        b = self.end.y - self.start.y
+        d = math.sqrt(a**2 + b**2)
+        return d
 
     def get_number_of_clones(self):
         """
@@ -490,7 +493,7 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
-
+        
     def line_plus(self, other_line):
         """
         What comes in:
