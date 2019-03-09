@@ -328,11 +328,20 @@ class CapitalT(object):
         # IMPORTANT RESTRICTION: You are NOT permitted to add any instance
         # variables beyond  h_rect  and  v_rect, at any point of this exercise.
         #######################################################################
-        clone_t = CapitalT(self.intersection_center, self.width, self.height, self.letter_thickness)
-        clone_t.set_colors(self.v_rect.fill_color, self.v_rect.outline_color)
-        clone_t.set_colors(self.h_rect.fill_color, self.h_rect.outline_color)
+        corner1h = self.h_rect.get_upper_left_corner()
+        corner2h = self.h_rect.get_lower_right_corner()
+        corner1w = self.v_rect.get_upper_left_corner()
+        corner2w = self.v_rect.get_lower_right_corner()
+        width = corner2h.x - corner1h.x
+        height = corner2w.y - corner1w.y
+        letter_thickness = corner2w.x - corner1w.x
+        intersection_center = rg.Point((corner2h.x - corner1h.x)/2, (corner2w.y - corner1w.y)/2)
+        clone_t = CapitalT(intersection_center, width, height, letter_thickness)
+        clone_t.h_rect.fill_color = self.h_rect.fill_color
+        clone_t.v_rect.fill_color = self.v_rect.fill_color
+        clone_t.h_rect.outline_color = self.h_rect.outline_color
+        clone_t.v_rect.outline_color = self.v_rect.outline_color
         return clone_t
-
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
